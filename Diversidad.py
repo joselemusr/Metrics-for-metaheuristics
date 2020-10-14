@@ -107,21 +107,6 @@ def g(frecuencia):
 
   return g
 
-def Dimensional(Poblacion):
-  Diversidad = 0
-  MatrizDiversidad = np.zeros((len(Poblacion)))
-  Pob = np.array(Poblacion)
-  Promedio = np.median(Poblacion, axis=1)
-
-  for d in range(len(Poblacion[0])):
-    Divj = 0
-    MatrizDiversidad = abs(Promedio  - Pob[:,d])
-    Diversidad = Diversidad + MatrizDiversidad.sum()/len(Poblacion[0])
-        
-  Diversidad = Diversidad / len(Poblacion)
-
-  return Diversidad
-
 def PesosDeInercia(Poblacion):
   Pob = Poblacion
   N = Pob.shape[0]
@@ -150,11 +135,10 @@ def ObtenerDiversidadYEstado(Poblacion,maxDiversidades):
     diversidades = []
     diversidades.append(DimensionalHussain(Poblacion)) #0
     diversidades.append(PesosDeInercia(Poblacion)) #1
-    diversidades.append(Dimensional(Poblacion)) #2
-    diversidades.append(LeungGaoXu(Poblacion)) #3
-    diversidades.append(Entropica(Poblacion)) #4
-    diversidades.append(Hamming(Poblacion)) #5
-    diversidades.append(MomentoDeInercia(Poblacion)) #6     
+    diversidades.append(LeungGaoXu(Poblacion)) #2
+    diversidades.append(Entropica(Poblacion)) #3
+    diversidades.append(Hamming(Poblacion)) #4
+    diversidades.append(MomentoDeInercia(Poblacion)) #5
 
     #Actualizar maxDiversidades y calculamos PorcentajeExplor PorcentajeExplot
     PorcentajeExplor = []
